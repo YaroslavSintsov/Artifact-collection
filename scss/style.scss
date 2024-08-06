@@ -1,0 +1,225 @@
+// o
+@use 'sass:math';
+
+// Импорт normalize.css
+@import '../../node_modules/normalize.css/normalize';
+
+// Подключение миксинов
+@import 'base/mixins';
+
+// Подключение шрифтов
+// &display=swap - добавить при подключении из google fonts
+
+// Подключить если есть локальные файлы шрифтов
+//@import "fonts/fonts";
+
+// Подключение иконочных шрифтов
+// Подключить если есть файл иконочного шрифта
+//@import "fonts/icons";
+
+// Шрифт по умолчанию
+$fontFamily: "Raleway", sans-serif;
+$fontSize: rem(14); // где 14(px) - размер шрифта по умолчанию из макета
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// Основные цвета
+$mainColor: #000; // Цвет шрифта по умолчанию
+$colorAllText: #2C2D35;
+$colorHeaderInk: #598D66;
+$headerBackground: #E1EDE6;
+$colorAfter: #86928B;
+$colorClick: #376B44;
+$colorNotClick: #D4E8D9;
+$backgroundFrame: #E1EDE6;
+$color: #F4F6F5;
+$colorPromo: #fff;
+$iconsColor: #EEDB6D;
+$promoBackground: #0D2B43;
+body{
+  overflow-x: hidden;
+}
+
+// НАСТРОЙКИ
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1440;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1110;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 40;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em(
+  $containerWidth
+); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Обнуление и общие параметры
+html,
+body {
+  height: 100%;
+  min-width: $minWidth + px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+body {
+  color: $mainColor;
+  line-height: 1;
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  //text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: auto;
+  // scrollbar-width: thin;
+  // scrollbar-color: $sb-thumb $bg; // Бегунок, дорожка
+  // Скролл заблокирован
+  .lock & {
+    // overflow: hidden;
+    touch-action: none;
+  }
+
+  // Сайт загружен
+  .loaded & {
+  }
+
+  &::-webkit-scrollbar {
+    // width: ;
+  }
+
+  &::-webkit-scrollbar-track {
+    // background-color: $bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background-color: $sb-thumb;
+    // border-radius: ;
+  }
+}
+.container{
+}
+
+* {
+  // scrollbar-width: thin;
+  // scrollbar-color: $sb-thumb $bg; // Бегунок, дорожка
+
+  &::-webkit-scrollbar {
+    // width: ;
+  }
+
+  &::-webkit-scrollbar-track {
+    // background-color: $bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    // background-color: $sb-thumb;
+    // border-radius: ;
+  }
+}
+
+// Оболочка
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  // Прижимаем footer
+  > main {
+    flex: 1 1 auto;
+  }
+
+  // Фикс для слайдеров
+  > * {
+    min-width: 0;
+  }
+}
+
+// Ограничивающий контейнер
+
+// (i) Стили будут применяться ко
+// всем классам содержащим *__container
+// Например header__container, main__container и т.д.
+@if ($responsiveType==1) {
+  // Отзывчивая
+  [class*='__container'] {
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: content-box;
+      margin: 0 auto;
+    }
+
+    @if ($containerPadding>0) {
+      padding: 0 rem(math.div($containerPadding, 2));
+    }
+  }
+} @else {
+  // По брейк-поинтам
+  [class*='__container'] {
+    margin: 0 auto;
+
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: content-box;
+    } @else {
+      @if ($containerPadding>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+
+    @media (max-width: $pc) {
+      max-width: rem(970);
+    }
+
+    @media (max-width: $tablet) {
+      max-width: rem(750);
+    }
+
+    @media (max-width: $mobile) {
+      max-width: none;
+
+      @if ($containerPadding>0 and $maxWidthContainer>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+  }
+}
+
+// Подключение базовых стилей
+//@import 'base/base';
+
+// Подключение стилей библиотек
+//@import 'libs/libs';
+
+// Подключение стилей общих элементов проекта
+@import 'common';
+
+// Подключение стилей отдельных блоков
+@import 'header';
+@import 'footer';
+
+// Подключение стилей отдельных страниц
+@import '_home';
+html body{
+  scroll-behavior: smooth;
+  transition: 5s all ease;
+}
