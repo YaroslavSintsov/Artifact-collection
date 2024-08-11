@@ -6,9 +6,9 @@ import {
 } from './services/flags.js'
 
 export function menuInit() {
-  if (document.querySelector('#menu-btn')) {
+  if (document.querySelector('.menu-btn')) {
     document.addEventListener('click', function (e) {
-      if (bodyLockStatus && e.target.closest('#menu-btn')) {
+      if (bodyLockStatus && e.target.closest('.menu-btn')) {
         bodyLockToggle()
         document.documentElement.classList.toggle('menu-open')
       }

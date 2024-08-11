@@ -27,17 +27,10 @@ $fontSize: rem(14); // где 14(px) - размер шрифта по умолч
 }
 // Основные цвета
 $mainColor: #000; // Цвет шрифта по умолчанию
-$colorAllText: #2C2D35;
-$colorHeaderInk: #598D66;
-$headerBackground: #E1EDE6;
-$colorAfter: #86928B;
-$colorClick: #376B44;
-$colorNotClick: #D4E8D9;
-$backgroundFrame: #E1EDE6;
-$color: #F4F6F5;
-$colorPromo: #fff;
-$iconsColor: #EEDB6D;
-$promoBackground: #0D2B43;
+$colorAllText: #fff;
+$buttonSpanColor: #BAE249;
+$mainBackground: #1D2F30;
+$colorAfter: #899D9D;
 body{
   overflow-x: hidden;
 }
@@ -51,7 +44,7 @@ $maxWidth: 1440;
 $maxWidthContainer: 1110;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
-$containerPadding: 40;
+$containerPadding: 32;
 
 // Ширина срабатывания первого брейкпоинта
 $containerWidth: $maxWidthContainer + $containerPadding;
@@ -187,11 +180,11 @@ body {
     }
 
     @media (max-width: $pc) {
-      max-width: rem(970);
+      max-width: rem(1070);
     }
 
     @media (max-width: $tablet) {
-      max-width: rem(750);
+      max-width: rem(850);
     }
 
     @media (max-width: $mobile) {
