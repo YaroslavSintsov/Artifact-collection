@@ -198,7 +198,7 @@ body {
 }
 
 // Подключение базовых стилей
-//@import 'base/base';
+// @import 'base/base';
 
 // Подключение стилей библиотек
 //@import 'libs/libs';
@@ -213,6 +213,4 @@ body {
 // Подключение стилей отдельных страниц
 @import '_home';
 html body{
-  scroll-behavior: smooth;
-  transition: 5s all ease;
 }
