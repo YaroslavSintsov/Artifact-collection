@@ -26,4 +26,32 @@ const swiper = new Swiper('.slide', {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
+    breakpoints:{
+        425: {
+
+        }
+    }
+})
+const swiper2 = new Swiper('.slide2', {
+    pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+        clickable: true,
+        renderFraction: function(currentClass, totalClass){
+            return '<span class="' + currentClass + ' "> </span> ' +
+            'из ' +
+            '<span class ="' + totalClass + '"></span>'
+        }
+    },
+    slidesPerView: 'auto',
+    watchOverflow: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints:{
+        425: {
+
+        }
+    }
 })
