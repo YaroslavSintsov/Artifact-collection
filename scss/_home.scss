@@ -2,6 +2,7 @@
     margin-left: 00px;
 }
 .page__container{
+    overflow: hidden;
 }
 .page{
     background-color: $mainBackground;
@@ -62,8 +63,8 @@
     position: relative;
     align-items: center;
     justify-content: end;
+    max-width: 102%;
     overflow: hidden;
-    max-width: 98%;
 }
 .slide2{
 
@@ -78,19 +79,14 @@
 .cards{
     padding: 50px 0;
     display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
 }
 .cards__item{
     display: flex;
     border: 1px #0B1919 solid;
-    width: 255px !important;
+    width: 260px !important;
     margin-right: 20px;
-    width: 255px;
 }
 .cards__item:nth-child(1){
-    margin-right: 20px;
-    margin-left:10px;
 }
 .card{
     min-height: 400px !important;
